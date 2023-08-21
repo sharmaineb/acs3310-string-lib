@@ -3,18 +3,13 @@
 // example: hello world --> Hello world
 
 function capitalize(str) {
+    if (str === '') {
+        return '';
+    }
     const first = str[0].toUpperCase();
     const rest = str.slice(1);
-    return first + rest
-};
-
-// strategy 2
-
-// function capitalize(str) {
-//     const arr = str.split('');
-//     arr[0] = arr[0].toUpperCase();
-//     return arr.join('');
-//   }
+    return first + rest;
+}
 
 // Challenge 2
 // makes all characters uppercase
@@ -22,7 +17,7 @@ function capitalize(str) {
 
 function allCaps(str) {
     return str.toUpperCase();
-};
+}
 
 // Challenge 3
 // makes the first character of each word uppercase. 
@@ -41,10 +36,10 @@ function capitalizeWords(str) {
 
 function removeExtraSpaces(str) {
     const trimmed = str.trim();
-    const chars = trimmed.split(' ');
-    const filtered = chars.filter( (c) => c !== '' );
+    const words = trimmed.split(' ');
+    const filtered = words.filter(word => word !== '');
     return filtered.join(' ');
-}
+};
 
 // Challenge 5 
 // removes extra spaces and replaces spaces with the hyphen "-", and makes all characters lowercase.
@@ -112,20 +107,6 @@ function shift(str) {
     const first = str[0];
     const rest = str.slice(1);
     return rest + first;
-}
-
-// advanced function
-// include an optional second parameter that sets the number of characters to shift.
-function shift(str, num = 1) {
-    if (str.length <= 1 || num <= 0) {
-        return str;
-    }
-    while (num >= str.length) {
-        num -= str.length;
-    }
-    const front = str.slice(0, num);
-    const back = str.slice(num);
-    return back + front;
 };
 
 // Challenge 9
@@ -138,8 +119,9 @@ function makeHashTag(str) {
     const words = str.split(' ');  
     // sort words by length in descending order
     const sortedWords = words.sort((a, b) => b.length - a.length);  
-    // take the first three longest words, convert to lowercase and add '#'
-    const hashTags = sortedWords.slice(0, 3).map(word => `#${word.toLowerCase()}`);  
+    // filter out empty words and take the first three longest words
+    const nonEmptyWords = sortedWords.filter(word => word !== '');
+    const hashTags = nonEmptyWords.slice(0, 3).map(word => `#${word.toLowerCase()}`);  
     return hashTags;
 };
 
@@ -159,34 +141,23 @@ function isEmpty(str) {
       if (char !== '\n' && char !== '\r' && char !== '\t') {
       // the string contains non-whitespace characters
         return false; 
-      }
-    }
+      };
+    };
     // the string is empty or contains only whitespace
     return true; 
 };
 
-console.log( capitalize('hello world') )
-console.log( allCaps('hello world') )
-console.log( capitalizeWords('hello world') )
-console.log( removeExtraSpaces('    Hello   world!  ') )
-console.log(camelCase('Hello world'))
-console.log(kebob('   Hello    world   '))
-console.log(snake('   Hello    world   '))
-console.log(shift('Hello World'))
+// exports
 
-const input2 = 'Hello World';
-const output2 = shift(input2, 3)
-console.log(output2)
-
-console.log(makeHashTag('Amazing bongo drums for sale'));
-
-const input3 = "Abc def";
-console.log(isEmpty(input3));
-
-const str = `   
-			
-			`;
-console.log(isEmpty(str));  
-
-
-  
+module.exports = {
+    capitalize,
+    allCaps,
+    capitalizeWords,
+    removeExtraSpaces,
+    kebob,
+    snake,
+    camelCase,
+    shift,
+    makeHashTag,
+    isEmpty,
+};
