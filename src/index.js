@@ -136,9 +136,9 @@ function shift(str, num = 1) {
 
 function makeHashTag(str) {
     const words = str.split(' ');  
-    // Sort words by length in descending order
+    // sort words by length in descending order
     const sortedWords = words.sort((a, b) => b.length - a.length);  
-    // Take the first three longest words, convert to lowercase and add '#'
+    // take the first three longest words, convert to lowercase and add '#'
     const hashTags = sortedWords.slice(0, 3).map(word => `#${word.toLowerCase()}`);  
     return hashTags;
 };
