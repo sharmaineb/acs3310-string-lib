@@ -2,6 +2,8 @@
 
 [<img src="https://img.shields.io/badge/ESLint-Passed-brightgreen" alt="ESLint">](https://www.npmjs.com/package/@sharshar/string-lib)
 
+[npm package link](https://www.npmjs.com/package/@sharshar/string-lib)
+
 This repository contains a collection of JavaScript functions that perform various string manipulation tasks.
 
 ## Table of Contents
