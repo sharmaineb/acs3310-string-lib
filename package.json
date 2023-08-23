@@ -1,6 +1,6 @@
 {
   "name": "@sharshar/string-lib",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A JS library for strings.",
   "main": "./src/index.js",
   "scripts": {
